@@ -168,7 +168,7 @@ function cz_sutra_memorizer_render_shortcode(): string
             'playSegment'   => __('Riproduci segmento', 'cz-sutra-memorizer'),
             'noAudio'       => __('Audio non disponibile', 'cz-sutra-memorizer'),
             'noSutras'      => __('Nessun sutra disponibile al momento.', 'cz-sutra-memorizer'),
-            'romajiLabel'   => __('Romaji', 'cz-sutra-memorizer'),
+            'textLabel'     => __('Testo', 'cz-sutra-memorizer'),
             'originalLabel' => __('Originale', 'cz-sutra-memorizer'),
             'translationLabel' => __('Traduzione', 'cz-sutra-memorizer'),
             'audioMissing'  => __('Questo sutra non ha un audio associato.', 'cz-sutra-memorizer'),

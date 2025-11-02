@@ -2,14 +2,14 @@
   {
     "id": "hannya-shingyo",
     "title": "Hannya Shingyō",
-    "description": "Suddivisione in dodici sezioni del Sutra del Cuore, con testo originale, lettura romaji e traduzione italiana.",
+    "description": "Suddivisione in dodici sezioni del Sutra del Cuore per la memorizzazione.",
     "audio": "assets/audio/hannya-shingyo.mp3",
     "cards": [
       {
         "id": "hs-01",
         "sequence": 1,
         "original": "観自在菩薩\n行深般若波羅蜜多時\n照見五蘊皆空\n度一切苦厄",
-        "romaji": "kan ji zai bo satsu\ngyō jin han-nya ha ra mi ta ji\nshō ken go on kai kū\ndo is-sai ku yaku",
+        "romaji": "kan ji zai bo satsu\ngyō jin han-nya ha ra mi ta ji\nshō ken ◎ go on kai kū\ndo is-sai ku yaku",
         "translation": "Il Bodhisattva Avalokiteshvara, mentre praticava profondamente la Prajñā Pāramitā, vide che i cinque aggregati sono vuoti e superò ogni sofferenza.",
         "audioStart": 19.6,
         "audioEnd": 32.2
@@ -39,7 +39,7 @@
         "romaji": "ze ko kū chū\nmu shiki mu ju sō gyō shiki\nmu gen ni bi zesshin ni\nmu shiki shō kō mi soku hō",
         "translation": "Perciò, nel vuoto non vi sono forma, sensazione, percezione, formazioni mentali né coscienza; non vi sono occhi, orecchie, naso, lingua, corpo o mente; non vi sono forme, suoni, odori, sapori, contatti né oggetti mentali.",
         "audioStart": 57.2,
-        "audioEnd": 62
+        "audioEnd": 69.8
       },
       {
         "id": "hs-05",
@@ -47,8 +47,8 @@
         "original": "無眼界乃至無意識界\n無無明亦無無明尽\n乃至無老死\n亦無老死尽",
         "romaji": "mu gen kai nai shi mu i shiki kai\nmu mu myō yaku mu mu myō jin\nnai shi mu rō shi\nyaku mu rō shi jin",
         "translation": "Non vi è dominio dell’occhio fino al dominio della coscienza mentale; non c’è ignoranza né cessazione dell’ignoranza; e così fino a non vi è vecchiaia e morte né cessazione di vecchiaia e morte.",
-        "audioStart": 50,
-        "audioEnd": 62
+        "audioStart": 70.8,
+        "audioEnd": 84.3
       },
       {
         "id": "hs-06",
@@ -56,26 +56,26 @@
         "original": "無苦集滅道\n無智亦無得\n以無所得故",
         "romaji": "mu ku shū metsu dō\nmu chi yaku mu toku\ni mu sho toku ko",
         "translation": "Non vi è sofferenza, origine, cessazione né sentiero; non vi è saggezza né ottenimento, perché non vi è nulla da conseguire.",
-        "audioStart": 62,
-        "audioEnd": 74
+        "audioStart": 85,
+        "audioEnd": 92.7
       },
       {
         "id": "hs-07",
         "sequence": 7,
         "original": "菩提薩埵\n依般若波羅蜜多故\n心無罣礙\n無罣礙故\n無有恐怖\n遠離一切顛倒夢想",
-        "romaji": "bo dai sat-ta\ne han-nya ha ra mi ta ko\nshin mu kei ge\nmu kei ge ko\nmu u ku fu\non ri issai ten dō mu sō",
+        "romaji": "bo dai sat-ta\ne han-nya ha ra mi ta ◎ ko\nshin mu kei ge\nmu kei ge ko\nmu u ku fu\non ri issai ten dō mu sō",
         "translation": "I bodhisattva, affidandosi alla Prajñā Pāramitā, hanno la mente libera da impedimenti; senza impedimenti non vi è paura e si allontanano da ogni illusione e capovolgimento.",
-        "audioStart": 74,
-        "audioEnd": 86
+        "audioStart": 93.5,
+        "audioEnd": 109.3
       },
       {
         "id": "hs-08",
         "sequence": 8,
         "original": "究竟涅槃\n三世諸仏\n依般若波羅蜜多故\n得阿耨多羅三藐三菩提",
-        "romaji": "ku gyō ne han\nsan ze sho butsu\ne han-nya ha ra mi ta ko\ntoku a noku ta ra san myaku san bo dai",
+        "romaji": "ku gyō ne han\nsan ze sho butsu\ne han-nya ha ra mi ta ◎ ko\ntoku wa noku ta ra san myaku san bo dai",
         "translation": "Dimorando nel nirvāṇa, tutti i Buddha delle tre epoche, appoggiandosi alla Prajñā Pāramitā, ottengono il supremo completo risveglio.",
-        "audioStart": 86,
-        "audioEnd": 100
+        "audioStart": 110.5,
+        "audioEnd": 123.5
       },
       {
         "id": "hs-09",
@@ -83,8 +83,8 @@
         "original": "故知般若波羅蜜多\n是大神呪\n是大明呪\n是無上呪\n是無等等呪",
         "romaji": "ko chi han-nya ha ra mi ta\nze dai jin shu\nze dai myō shu\nze mu jō shu\nze mu tō dō shu",
         "translation": "Perciò sappi che la Prajñā Pāramitā è il grande mantra, il mantra luminoso, il mantra supremo, il mantra insuperabile.",
-        "audioStart": 100,
-        "audioEnd": 112
+        "audioStart": 124.5,
+        "audioEnd": 136.8
       },
       {
         "id": "hs-10",
@@ -92,17 +92,17 @@
         "original": "能除一切苦\n真実不虚\n故説般若波羅蜜多呪\n即説呪曰",
         "romaji": "nō jo issai ku\nshin jitsu fu ko\nko setsu han-nya ha ra mi ta shu\nsoku setsu shu watsu",
         "translation": "È capace di eliminare ogni sofferenza; è verità e non inganno. Perciò dichiaro il mantra della Prajñā Pāramitā, ed ecco il mantra:",
-        "audioStart": 112,
-        "audioEnd": 124
+        "audioStart": 137.6,
+        "audioEnd": 148.3
       },
       {
         "id": "hs-11",
         "sequence": 11,
         "original": "羯諦羯諦\n波羅羯諦\n波羅僧羯諦\n菩提薩婆訶",
-        "romaji": "gya tei gya tei\nhara gya tei\nhara sō gya tei\nbo ji sowa ka",
+        "romaji": "gya tei gya tei ● \nhara gya tei\nhara sō gya tei ● \nbo ji sowa ka",
         "translation": "Gate gate pāragate pārasamgate bodhi svāhā.",
-        "audioStart": 124,
-        "audioEnd": 138
+        "audioStart": 149.33,
+        "audioEnd": 157
       },
       {
         "id": "hs-12",
@@ -110,8 +110,8 @@
         "original": "般若心経",
         "romaji": "han-nya shin gyo",
         "translation": "Sutra del Cuore della Saggezza Perfetta.",
-        "audioStart": 138,
-        "audioEnd": 152
+        "audioStart": 157.8,
+        "audioEnd": null
       }
     ]
   }

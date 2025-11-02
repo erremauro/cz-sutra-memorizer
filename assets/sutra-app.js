@@ -20,7 +20,7 @@
     playSegment: 'Riproduci segmento',
     noAudio: 'Audio non disponibile',
     noSutras: 'Nessun sutra disponibile al momento.',
-    romajiLabel: 'Romaji',
+    textLabel: 'Testo',
     originalLabel: 'Originale',
     translationLabel: 'Traduzione',
     audioMissing: 'Questo sutra non ha un audio associato.',
@@ -311,7 +311,7 @@
       createElement(
         'div',
         { className: 'cz-card__block cz-card__block--romaji cz-card__block--primary' },
-        createElement('span', { className: 'cz-card__label' }, props.strings.romajiLabel),
+        createElement('span', { className: 'cz-card__label' }, props.strings.textLabel),
         createElement('p', { className: 'cz-card__text' }, card.romaji || '')
       ),
       createElement(
@@ -811,8 +811,39 @@
       setProgress(0);
     };
 
-    var playSegment = useCallback(function (card) {
-      setCurrentCardId(card.id || null);
+    var cards = currentSutra && Array.isArray(currentSutra.cards) ? currentSutra.cards : [];
+    var stateActiveIndex = useState(0);
+    var activeIndex = stateActiveIndex[0];
+    var setActiveIndex = stateActiveIndex[1];
+
+    var getCardIdentifier = useCallback(function (card, index) {
+      if (!card || typeof card !== 'object') {
+        return null;
+      }
+
+      if (card.id !== undefined && card.id !== null && card.id !== '') {
+        return String(card.id);
+      }
+
+      if (card.sequence !== undefined && card.sequence !== null && card.sequence !== '') {
+        return 'sequence:' + String(card.sequence);
+      }
+
+      if (typeof index === 'number' && !Number.isNaN(index)) {
+        return 'index:' + index;
+      }
+
+      if (card.romaji) {
+        return 'romaji:' + String(card.romaji);
+      }
+
+      return null;
+    }, []);
+
+    var playSegment = useCallback(function (card, index) {
+      var cardIndex = typeof index === 'number' && !Number.isNaN(index) ? index : cards.indexOf(card);
+      var identifier = getCardIdentifier(card, cardIndex);
+      setCurrentCardId(identifier);
 
       var audio = audioRef.current;
       if (!audio || !currentSutra || !currentSutra.audio) {
@@ -828,7 +859,7 @@
       var end = hasEnd ? card.audioEnd : null;
 
       segmentContextRef.current = {
-        cardId: card.id || null,
+        cardId: identifier,
         start: start,
         end: end
       };
@@ -877,46 +908,17 @@
       } else {
         setIsPlaying(true);
       }
-    }, [clearLimiter, currentSutra, pauseAtSegmentEnd, setCurrentCardId, setIsPlaying, setPlaybackMode, setProgress]);
-
-    var cards = currentSutra && Array.isArray(currentSutra.cards) ? currentSutra.cards : [];
-    var stateActiveIndex = useState(0);
-    var activeIndex = stateActiveIndex[0];
-    var setActiveIndex = stateActiveIndex[1];
-
-    var resetForCard = useCallback(
-      function (card) {
-        var audio = audioRef.current;
-        if (audio) {
-          audio.pause();
-          clearLimiter(audio);
-          targetEndRef.current = null;
-        }
-
-        segmentContextRef.current = null;
-        setIsPlaying(false);
-        setPlaybackMode(null);
-
-        var nextId = card && card.id ? card.id : null;
-        setCurrentCardId(nextId);
-
-        var startTime = 0;
-        if (card && typeof card.audioStart === 'number' && !Number.isNaN(card.audioStart)) {
-          startTime = card.audioStart;
-        }
-
-        setProgress(startTime);
-
-        if (audio) {
-          try {
-            audio.currentTime = startTime;
-          } catch (error) {
-            // ignore seek errors
-          }
-        }
-      },
-      [clearLimiter, setCurrentCardId, setIsPlaying, setPlaybackMode, setProgress]
-    );
+    }, [
+      cards,
+      clearLimiter,
+      currentSutra,
+      getCardIdentifier,
+      pauseAtSegmentEnd,
+      setCurrentCardId,
+      setIsPlaying,
+      setPlaybackMode,
+      setProgress
+    ]);
 
     var goToIndex = useCallback(
       function (index) {
@@ -925,11 +927,9 @@
         }
 
         var clamped = Math.max(0, Math.min(index, cards.length - 1));
-        var card = cards[clamped] || null;
-        resetForCard(card);
         setActiveIndex(clamped);
       },
-      [cards, resetForCard, setActiveIndex]
+      [cards, setActiveIndex]
     );
 
     var goNext = useCallback(
@@ -964,7 +964,8 @@
         typeof activeCard.audioStart === 'number' &&
         !Number.isNaN(activeCard.audioStart);
 
-      var thisCardIsCurrent = currentCardId === (activeCard.id || null);
+      var thisCardIdentifier = getCardIdentifier(activeCard, activeIndex);
+      var thisCardIsCurrent = currentCardId !== null && currentCardId === thisCardIdentifier;
       var isCardPlaying = isPlaying && playbackMode === 'segment' && thisCardIsCurrent;
       var isCardPaused = !isPlaying && playbackMode === 'segment' && thisCardIsCurrent;
 
@@ -972,7 +973,7 @@
         key: activeCard.id || activeCard.sequence || String(activeIndex),
         card: activeCard,
         onPlay: function () {
-          playSegment(activeCard);
+          playSegment(activeCard, activeIndex);
         },
         isActive: true,
         canPlay: canPlayActive,
@@ -1009,10 +1010,9 @@
       function () {
         if (currentSutra && Array.isArray(currentSutra.cards)) {
           setActiveIndex(0);
-          resetForCard(currentSutra.cards.length > 0 ? currentSutra.cards[0] : null);
         }
       },
-      [currentSutra, resetForCard]
+      [currentSutra]
     );
 
     var infoBar = null;
