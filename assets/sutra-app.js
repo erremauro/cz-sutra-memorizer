@@ -409,7 +409,7 @@
     var segmentContextRef = useRef(null);
     var targetEndRef = useRef(null);
 
-    var clearLimiter = function (audio) {
+    var clearLimiter = useCallback(function (audio) {
       if (!audio) {
         return;
       }
@@ -418,7 +418,7 @@
         audio.removeEventListener('timeupdate', limiterRef.current);
         limiterRef.current = null;
       }
-    };
+    }, []);
 
     var stopPlayback = useCallback(function () {
       var audio = audioRef.current;
@@ -455,7 +455,7 @@
       segmentContextRef.current = null;
       targetEndRef.current = null;
       setProgress(audio.currentTime || 0);
-    }, [playbackMode]);
+    }, [clearLimiter, playbackMode]);
 
     var pausePlayback = useCallback(function () {
       var audio = audioRef.current;
