@@ -1,0 +1,20 @@
+{
+  "name": "cz-sutra-memorizer",
+  "version": "0.0.1",
+  "description": "Cigno Zen Plugin for Memorizing Sutras",
+  "homepage": "https://github.com/erremauro/cz-sutra-memorizer#readme",
+  "bugs": {
+    "url": "https://github.com/erremauro/cz-sutra-memorizer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erremauro/cz-sutra-memorizer.git"
+  },
+  "license": "ISC",
+  "author": "Roberto Mauro <erremauro@icloud.com>",
+  "type": "commonjs",
+  "main": "cz-sutra-memorizer.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
