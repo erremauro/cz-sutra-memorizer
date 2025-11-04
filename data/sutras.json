@@ -1,15 +1,15 @@
 [
   {
     "id": "hannya-shingyo",
-    "title": "Hannya Shingyō",
-    "description": "Suddivisione in dodici sezioni del Sutra del Cuore per la memorizzazione.",
+    "title": "HANNYA SHINGYŌ (Il Sutra del Cuore)",
+    "description": "Il Sutra del Cuore suddiviso in dodici sezioni per facilitarne la memorizzazione.",
     "audio": "assets/audio/hannya-shingyo.mp3",
     "cards": [
       {
         "id": "hs-01",
         "sequence": 1,
         "original": "観自在菩薩\n行深般若波羅蜜多時\n照見五蘊皆空\n度一切苦厄",
-        "romaji": "kan ji zai bo satsu\ngyō jin han-nya ha ra mi ta ji\nshō ken ◎ go on kai kū\ndo is-sai ku yaku",
+        "romaji": "kan ji zai bo satsu\ngyō jin han-nya ha ra mi ta ji\nshō ken ◉ go on kai kū\ndo is-sai ku yaku",
         "translation": "Il Bodhisattva Avalokiteshvara, mentre praticava profondamente la Prajñā Pāramitā, vide che i cinque aggregati sono vuoti e superò ogni sofferenza.",
         "audioStart": 19.6,
         "audioEnd": 32.2
@@ -56,23 +56,23 @@
         "original": "無苦集滅道\n無智亦無得\n以無所得故",
         "romaji": "mu ku shū metsu dō\nmu chi yaku mu toku\ni mu sho toku ko",
         "translation": "Non vi è sofferenza, origine, cessazione né sentiero; non vi è saggezza né ottenimento, perché non vi è nulla da conseguire.",
-        "audioStart": 85,
+        "audioStart": 85.15,
         "audioEnd": 92.7
       },
       {
         "id": "hs-07",
         "sequence": 7,
         "original": "菩提薩埵\n依般若波羅蜜多故\n心無罣礙\n無罣礙故\n無有恐怖\n遠離一切顛倒夢想",
-        "romaji": "bo dai sat-ta\ne han-nya ha ra mi ta ◎ ko\nshin mu kei ge\nmu kei ge ko\nmu u ku fu\non ri issai ten dō mu sō",
+        "romaji": "bo dai sat-ta\ne han-nya ha ra mi ta ◉ ko\nshin mu kei ge\nmu kei ge ko\nmu u ku fu\non ri issai ten dō mu sō",
         "translation": "I bodhisattva, affidandosi alla Prajñā Pāramitā, hanno la mente libera da impedimenti; senza impedimenti non vi è paura e si allontanano da ogni illusione e capovolgimento.",
-        "audioStart": 93.5,
+        "audioStart": 93.46,
         "audioEnd": 109.3
       },
       {
         "id": "hs-08",
         "sequence": 8,
         "original": "究竟涅槃\n三世諸仏\n依般若波羅蜜多故\n得阿耨多羅三藐三菩提",
-        "romaji": "ku gyō ne han\nsan ze sho butsu\ne han-nya ha ra mi ta ◎ ko\ntoku wa noku ta ra san myaku san bo dai",
+        "romaji": "ku gyō ne han\nsan ze sho butsu\ne han-nya ha ra mi ta ◉ ko\ntoku wa noku ta ra san myaku san bo dai",
         "translation": "Dimorando nel nirvāṇa, tutti i Buddha delle tre epoche, appoggiandosi alla Prajñā Pāramitā, ottengono il supremo completo risveglio.",
         "audioStart": 110.5,
         "audioEnd": 123.5
@@ -90,7 +90,7 @@
         "id": "hs-10",
         "sequence": 10,
         "original": "能除一切苦\n真実不虚\n故説般若波羅蜜多呪\n即説呪曰",
-        "romaji": "nō jo issai ku\nshin jitsu fu ko\nko setsu han-nya ha ra mi ta shu\nsoku setsu shu watsu",
+        "romaji": "nō jo is-sai ku\nshin jitsu fu ko\nko setsu han-nya ha ra mi ta shu\nsoku setsu shu watsu",
         "translation": "È capace di eliminare ogni sofferenza; è verità e non inganno. Perciò dichiaro il mantra della Prajñā Pāramitā, ed ecco il mantra:",
         "audioStart": 137.6,
         "audioEnd": 148.3
@@ -99,7 +99,7 @@
         "id": "hs-11",
         "sequence": 11,
         "original": "羯諦羯諦\n波羅羯諦\n波羅僧羯諦\n菩提薩婆訶",
-        "romaji": "gya tei gya tei ● \nhara gya tei\nhara sō gya tei ● \nbo ji sowa ka",
+        "romaji": "gya tei gya tei\n▲ hara gya tei\nhara sō gya tei\n▲ bo ji sowa ka",
         "translation": "Gate gate pāragate pārasamgate bodhi svāhā.",
         "audioStart": 149.33,
         "audioEnd": 157
@@ -112,6 +112,148 @@
         "translation": "Sutra del Cuore della Saggezza Perfetta.",
         "audioStart": 157.8,
         "audioEnd": null
+      }
+    ]
+  },
+  {
+    "id": "takkesage",
+    "title": "TAKKESA GE (Il Sutra del Kesa)",
+    "description": "Versetto della veste del Dharma, recitato prima di indossare il kesa o il rakusu.",
+    "audio": null,
+    "cards": [
+      {
+        "id": "tkk-01",
+        "sequence": 1,
+        "note": "Porta il kesa o il rakusu sopra il capo, con le mani in gasshō.",
+        "original": "大哉解脱服\n無相福田衣\n披奉如来教\n広度諸衆生",
+        "romaji": "dai sai gedap-puku\n◉ musō fukuden e\n◉ hi bu nyorai kyō\n◉ kōdo shoshū jō",
+        "translation": "Veste della grande liberazione, il campo di meriti senza forma. Indossando l'insegnamento del Tathāgata, liberiamo tutti gli esseri.",
+        "audioStart": null,
+        "audioEnd": null
+      }
+    ]
+  },
+  {
+    "id": "sutra-dei-pasti",
+    "title": "GYŌHATSU NENJU (Sutra dei Pasti)",
+    "description": "I Sutra dei Pasti sono una collezione di sutra che scandiscono il momento del pasto",
+    "audio": "assets/audio/sutra-dei-pasti.mp3",
+    "cards": [
+      {
+        "id": "sdp-01",
+        "sequence": 1,
+        "note": "Mani in gasshō",
+        "romaji": "bus-shō kabira\njō dō makada\nsep-po harana\nnyū metsu kuchira",
+        "audioStart": 0,
+        "audioEnd": 11.4
+      },
+      {
+        "id": "sdp-02",
+        "sequence": 2,
+        "romaji": "nyorai ō ryōki\ngakon toku futen\ngangu is-sai shu\ntō san rin kū jaku",
+        "audioStart": 11.5,
+        "audioEnd": 24
+      },
+      {
+        "id": "sdp-03",
+        "sequence": 3,
+        "note": "Aprire la ciotola",
+        "romaji": "Shin jin pashin birū shā nō fū\nEn mon hō shin rushā nō fū\nSen pa i kashin Shikya muni fū\nTōrāi asān mirūson bū",
+        "audioStart": 25,
+        "audioEnd": 49.2
+      },
+      {
+        "id": "sdp-04",
+        "sequence": 4,
+        "romaji": "Jihō san shi ishi shi fū\nDaī jin myō harin gākin\nDaī shin bunjusuri būsā\nDaī jin fuen būsā\nDaī hi kanshi in būsā",
+        "audioStart": 49.4,
+        "audioEnd": 74.5
+      },
+      {
+        "id": "sdp-05",
+        "sequence": 5,
+        "romaji": "Shi son būsā mōkōsā\nMōkō hōja hōrōmī",
+        "audioStart": 74.9,
+        "audioEnd": 88
+      },
+      {
+        "id": "sdp-06",
+        "sequence": 6,
+        "note": "Su 「tashō o hakari」, mani in gasshō, quindi in sasshū e poi in hokkaijō-in (zazen)",
+        "romaji": "Hitotsu ni wa kō no tashō o hakari\nKano rāi sho o hakaru\nFutatsu ni wa onorega tokugyō no\nZen ket-to hakat-te kuni ōzu",
+        "audioStart": 87.9,
+        "audioEnd": 104.9
+      },
+      {
+        "id": "sdp-07",
+        "sequence": 7,
+        "romaji": "Mitsu ni wa shīn o fusegi toga o hanaruru koto wa\nTontō o shū to su.\nYotsu ni wa masani ryō yaku o koto to suru wa\ngyōko o ryōzen ga tame nari.",
+        "audioStart": 105.2,
+        "audioEnd": 123.5
+      },
+      {
+        "id": "sdp-08",
+        "sequence": 8,
+        "romaji": "Itsutsu ni wa jōdō no tame no yueni\nima kono jiki o uku.",
+        "audioStart": 123.8,
+        "audioEnd": 133.2
+      },
+      {
+        "id": "sdp-09",
+        "sequence": 9,
+        "note": "(Cantato solo dal Godō o l'Inō)",
+        "romaji": "Jiten ki jin shu,\nGokin suji kyū\nSuji hen jihō\nIshi ki jin kyū",
+        "audioStart": null,
+        "audioEnd": null
+      },
+      {
+        "id": "sdp-10",
+        "sequence": 10,
+        "note": "Mettere il cucchiaio nella ciotola",
+        "romaji": "Jōbun sambō\nchūbun shion\nGekyū roku dō\nKai dō kuyō",
+        "audioStart": 133.9,
+        "audioEnd": 143.4
+      },
+      {
+        "id": "sdp-11",
+        "sequence": 11,
+        "note": "Alzare la ciotola",
+        "romaji": "Ik-ku idan is-sāi aku\nNiku i shu is-saī zen\nSanku ido shoshu jō\nKaīgu jō butsu dō",
+        "audioStart": 143.6,
+        "audioEnd": 158.2
+      },
+      {
+        "id": "sdp-12",
+        "sequence": 12,
+        "note": "Offrire l'acqua",
+        "romaji": "Gashi sen pas sūi\nNyo ten kan ro mi\nSeyo ki jin shū\nShiryō toku bō man\nOn makura sai sowaka",
+        "audioStart": 158.9,
+        "audioEnd": 184.3
+      },
+      {
+        "id": "sdp-13",
+        "sequence": 13,
+        "note": "(Cantanto solo dal Godō o dall'Inō)",
+        "romaji": "Shi shi kī jiki kūn\njiren kufu ja shī\nShin shin jin chō i hi\nKishu rin bujō son",
+        "audioStart": null,
+        "audioEnd": null
+      }
+    ]
+  },
+  {
+    "id": "shigun-seigan-mon",
+    "title": "SHIGU SEIGAN MON (I Quattro Voti)",
+    "description": "I quattro voti del bodhisattva, recitati al termine della pratica.",
+    "audio": "assets/audio/shigu-seigan-mon.mp3",
+    "cards": [
+      {
+        "id": "ssm-01",
+        "sequence": 1,
+        "original": "衆生無辺誓願度\n煩悩無尽誓願断\n法門無量誓願学\n仏道無上誓願成",
+        "romaji": "shujō muhen seigan do ◉ \nbonnō mujīn seigan dan ◉ \nhōmon muryō seigan gaku ◉ \nbutsudō mujō seigan jō",
+        "translation": "Per numerosi che siano gli esseri, faccio voto di aiutarli tutti a liberarsi.\nPer numerose che siano le illusioni, faccio voto di vincerle tutte.\nPer numerosi che siano i dharma, faccio voto di studiarli tutti.\nPer perfetta che sia la Via del Buddha, faccio voto di realizzarla.",
+        "audioStart": 9.44,
+        "audioEnd": 47.40
       }
     ]
   }

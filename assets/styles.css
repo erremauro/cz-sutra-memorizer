@@ -1,5 +1,6 @@
 .cz-sutra-memorizer {
-  --cz-font-base: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  --cz-font-san-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --cz-font-base: var(--font-body, var(--cz-font-san-serif));
   --cz-text: var(--text, #1d2327);
   --cz-text-soft: color-mix(in srgb, var(--cz-text) 75%, transparent);
   --cz-text-subtle: color-mix(in srgb, var(--cz-text) 55%, transparent);
@@ -105,7 +106,7 @@
 
 .cz-card.is-active {
   border-color: var(--cz-accent, #3c78d8);
-  box-shadow: 0 0 0 2px var(--cz-accent-soft, rgba(60, 120, 216, 0.2));
+  /* box-shadow: 0 0 0 2px var(--cz-accent-soft, rgba(60, 120, 216, 0.2)); */
   background: var(--cz-surface, #ffffff);
 }
 
@@ -127,6 +128,13 @@
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
+}
+
+.cz-card__note {
+  margin: 0 0 12px;
+  color: var(--cz-text-soft, #475569);
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .cz-card__action {
@@ -524,6 +532,7 @@
 }
 
 .cz-audio-progress__time {
+  font-family: var(--cz-font-san-serif);
   display: flex;
   align-items: center;
   gap: 6px;

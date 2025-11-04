@@ -302,70 +302,81 @@
       });
     };
 
+    var romajiLabel = props.strings.romajiLabel || props.strings.textLabel || '';
+    var hasOriginal = Boolean(card.original);
+    var hasTranslation = Boolean(card.translation);
+
     return createElement(
       'article',
       {
         className: 'cz-card' + (props.isActive ? ' is-active' : '')
       },
       createElement('header', { className: 'cz-card__header' }, headerChildren),
+      card.note
+        ? createElement('p', { className: 'cz-card__note' }, card.note)
+        : null,
       createElement(
         'div',
         { className: 'cz-card__block cz-card__block--romaji cz-card__block--primary' },
-        createElement('span', { className: 'cz-card__label' }, props.strings.textLabel),
+        createElement('span', { className: 'cz-card__label' }, romajiLabel),
         createElement('p', { className: 'cz-card__text' }, card.romaji || '')
       ),
-      createElement(
-        'div',
-        { className: 'cz-collapsible' + (showOriginal ? ' is-open' : '') },
-        createElement(
-          'button',
-          {
-            type: 'button',
-            className: 'cz-collapsible__header',
-            onClick: toggleOriginal,
-            'aria-expanded': showOriginal
-          },
-          createElement('span', { className: 'cz-collapsible__label' }, props.strings.originalLabel),
-          createElement(
-            'span',
-            { className: 'cz-collapsible__action' },
-            showOriginal ? props.strings.hideOriginal : props.strings.showOriginal
+      hasOriginal
+        ? createElement(
+            'div',
+            { className: 'cz-collapsible' + (showOriginal ? ' is-open' : '') },
+            createElement(
+              'button',
+              {
+                type: 'button',
+                className: 'cz-collapsible__header',
+                onClick: toggleOriginal,
+                'aria-expanded': showOriginal
+              },
+              createElement('span', { className: 'cz-collapsible__label' }, props.strings.originalLabel),
+              createElement(
+                'span',
+                { className: 'cz-collapsible__action' },
+                showOriginal ? props.strings.hideOriginal : props.strings.showOriginal
+              )
+            ),
+            showOriginal
+              ? createElement(
+                  'div',
+                  { className: 'cz-collapsible__content' },
+                  createElement('p', { className: 'cz-card__text' }, card.original || '')
+                )
+              : null
           )
-        ),
-        showOriginal
-          ? createElement(
-              'div',
-              { className: 'cz-collapsible__content' },
-              createElement('p', { className: 'cz-card__text' }, card.original || '')
-            )
-          : null
-      ),
-      createElement(
-        'div',
-        { className: 'cz-collapsible' + (showTranslation ? ' is-open' : '') },
-        createElement(
-          'button',
-          {
-            type: 'button',
-            className: 'cz-collapsible__header',
-            onClick: toggleTranslation,
-            'aria-expanded': showTranslation
-          },
-          createElement('span', { className: 'cz-collapsible__label' }, props.strings.translationLabel),
-          createElement(
-            'span',
-            { className: 'cz-collapsible__action' },
-            showTranslation ? props.strings.hideTranslation : props.strings.showTranslation
+        : null,
+      hasTranslation
+        ? createElement(
+            'div',
+            { className: 'cz-collapsible' + (showTranslation ? ' is-open' : '') },
+            createElement(
+              'button',
+              {
+                type: 'button',
+                className: 'cz-collapsible__header',
+                onClick: toggleTranslation,
+                'aria-expanded': showTranslation
+              },
+              createElement('span', { className: 'cz-collapsible__label' }, props.strings.translationLabel),
+              createElement(
+                'span',
+                { className: 'cz-collapsible__action' },
+                showTranslation ? props.strings.hideTranslation : props.strings.showTranslation
+              )
+            ),
+            showTranslation
+              ? createElement(
+                  'div',
+                  { className: 'cz-collapsible__content' },
+                  createElement('p', { className: 'cz-card__text' }, card.translation || '')
+                )
+              : null
           )
-        ),
-        showTranslation
-          ? createElement(
-              'div',
-              { className: 'cz-collapsible__content' },
-              createElement('p', { className: 'cz-card__text' }, card.translation || '')
-            )
-          : null
-      )
+        : null
     );
   }
 
