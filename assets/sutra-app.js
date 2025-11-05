@@ -84,7 +84,11 @@
         'aria-hidden': 'true'
       },
       createElement('path', {
-        d: 'M12 5V2L7 7l5 5V8c2.8 0 5 2.2 5 5s-2.2 5-5 5c-1.5 0-2.8-.7-3.7-1.7l-1.4 1.4C8.1 19.3 9.9 20.3 12 20.3c3.9 0 7-3.1 7-7s-3.1-7-7-7zM7.9 10.4 6.5 9C5.7 9.9 5.3 11 5.3 12.3c0 1 .3 1.9.8 2.7L4 15v3l5-5-1.1-.6z',
+        d: 'M21 18 13 12l8-6v12z',
+        fill: 'currentColor'
+      }),
+      createElement('path', {
+        d: 'M13 18 5 12l8-6v12z',
         fill: 'currentColor'
       })
     );
