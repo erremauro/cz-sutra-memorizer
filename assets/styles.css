@@ -193,7 +193,7 @@ html[data-theme="light"] .cz-sutra-selector__item.is-active {
     margin-top: 1em;
     border: 1px solid var(--border);
     padding: 1em;
-    border-radius: .25em;
+    border-radius: .5em;
 }
 
 .cz-sutra-title {
@@ -201,14 +201,25 @@ html[data-theme="light"] .cz-sutra-selector__item.is-active {
     line-height: 2;
 }
 
-.cz-sutra-description {
-    font-size: .8em;
+.cz-sutra-title__original {
+    font-family: var(--font-mincho);
+}
+
+.cz-sutra-subtitle {
+    margin: 0;
+    font-size: .85em;
     font-style: italic;
     color: var(--border);
 }
 
+.cz-sutra-description {
+    margin-top: 1em;
+    font-size: 1em;
+    color: var(--border);
+}
+
 .cz-audio-panel {
-    margin: 1em 0;
+    margin: 2em 0;
 }
 
 .cz-audio-status.is-missing {

@@ -42,6 +42,179 @@
     cardIndicatorLabel: 'Vai alla scheda'
   };
 
+  function computeCardIdentifier(card, index) {
+    if (!card || typeof card !== 'object') {
+      return null;
+    }
+
+    if (card.id !== undefined && card.id !== null && card.id !== '') {
+      return String(card.id);
+    }
+
+    if (card.sequence !== undefined && card.sequence !== null && card.sequence !== '') {
+      return 'sequence:' + String(card.sequence);
+    }
+
+    if (typeof index === 'number' && !Number.isNaN(index)) {
+      return 'index:' + index;
+    }
+
+    if (card.romaji) {
+      return 'romaji:' + String(card.romaji);
+    }
+
+    return null;
+  }
+
+  function findCardIndexByIdentifier(cards, identifier) {
+    if (!Array.isArray(cards) || !identifier) {
+      return 0;
+    }
+
+    for (var i = 0; i < cards.length; i += 1) {
+      if (computeCardIdentifier(cards[i], i) === identifier) {
+        return i;
+      }
+    }
+
+    return 0;
+  }
+
+  function getInitialSelectionFromUrl(sutras) {
+    var defaultId = sutras.length > 0 && sutras[0].id ? sutras[0].id : null;
+    var selection = {
+      sutraId: defaultId,
+      cardIdentifier: null
+    };
+
+    if (typeof window === 'undefined' || !window.location || typeof URLSearchParams === 'undefined') {
+      return selection;
+    }
+
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var sutraParam = params.get('sutra');
+      var cardParam = params.get('card');
+
+      if (sutraParam) {
+        for (var i = 0; i < sutras.length; i += 1) {
+          if (sutras[i] && sutras[i].id === sutraParam) {
+            selection.sutraId = sutraParam;
+            break;
+          }
+        }
+      }
+
+      if (cardParam) {
+        selection.cardIdentifier = cardParam;
+      }
+    } catch (error) {
+      // Ignora problemi di parsing dell'URL.
+    }
+
+    return selection;
+  }
+
+  function syncSelectedStateToUrl(sutraId, cardIdentifier, replaceState) {
+    if (typeof window === 'undefined' || !window.history || typeof window.history.replaceState !== 'function') {
+      return;
+    }
+
+    try {
+      var currentUrl = new URL(window.location.href);
+      if (sutraId) {
+        currentUrl.searchParams.set('sutra', sutraId);
+      } else {
+        currentUrl.searchParams.delete('sutra');
+      }
+
+      if (cardIdentifier) {
+        currentUrl.searchParams.set('card', cardIdentifier);
+      } else {
+        currentUrl.searchParams.delete('card');
+      }
+
+      var method = replaceState ? 'replaceState' : 'pushState';
+      var historyMethod = window.history[method];
+      if (typeof historyMethod === 'function') {
+        historyMethod.call(window.history, window.history.state, '', currentUrl.toString());
+      }
+    } catch (error) {
+      // Ignora eventuali errori di manipolazione della history.
+    }
+  }
+
+  function normalizeSutraTitleValue(rawTitle) {
+    var normalized = {
+      original: '',
+      romaji: '',
+      translation: ''
+    };
+
+    if (!rawTitle) {
+      return normalized;
+    }
+
+    if (typeof rawTitle === 'string') {
+      normalized.romaji = rawTitle;
+      return normalized;
+    }
+
+    if (typeof rawTitle === 'object') {
+      if (rawTitle.original) {
+        normalized.original = String(rawTitle.original);
+      }
+      if (rawTitle.romaji) {
+        normalized.romaji = String(rawTitle.romaji);
+      }
+      if (rawTitle.translation) {
+        normalized.translation = String(rawTitle.translation);
+      }
+    }
+
+    normalized.original = normalized.original.trim();
+    normalized.romaji = normalized.romaji.trim();
+    normalized.translation = normalized.translation.trim();
+
+    return normalized;
+  }
+
+  function buildSutraSelectorLabel(normalizedTitle, fallback) {
+    if (!normalizedTitle) {
+      return fallback;
+    }
+
+    var romaji = normalizedTitle.romaji;
+    var translation = normalizedTitle.translation;
+    var original = normalizedTitle.original;
+
+    if (romaji && translation) {
+      return romaji + ' (' + translation + ')';
+    }
+
+    if (romaji && original) {
+      return romaji + ' (' + original + ')';
+    }
+
+    if (romaji) {
+      return romaji;
+    }
+
+    if (original && translation) {
+      return original + ' (' + translation + ')';
+    }
+
+    if (original) {
+      return original;
+    }
+
+    if (translation) {
+      return translation;
+    }
+
+    return fallback;
+  }
+
   function IconPlay() {
     return createElement(
       'svg',
@@ -132,14 +305,9 @@
     var normalizedOptions = useMemo(
       function () {
         return sutras.map(function (sutra, index) {
-          var label = '';
-          if (sutra && sutra.title) {
-            label = sutra.title;
-          } else if (sutra && sutra.id) {
-            label = String(sutra.id);
-          } else {
-            label = 'Sutra ' + (index + 1);
-          }
+          var fallbackLabel = sutra && sutra.id ? String(sutra.id) : 'Sutra ' + (index + 1);
+          var normalizedTitle = normalizeSutraTitleValue(sutra ? sutra.title : null);
+          var label = buildSutraSelectorLabel(normalizedTitle, fallbackLabel);
 
           var value = sutra && sutra.id ? String(sutra.id) : '';
 
@@ -703,9 +871,37 @@
     var sutras = Array.isArray(config.sutras) ? config.sutras : [];
     var strings = Object.assign({}, fallbackStrings, config.strings || {});
 
-    var initialId = sutras.length > 0 && sutras[0].id ? sutras[0].id : null;
+    var initialSelection = getInitialSelectionFromUrl(sutras);
+    var initialId = initialSelection.sutraId;
+    var initialSutra = null;
 
-    var stateSelected = useState(initialId);
+    if (initialId) {
+      for (var i = 0; i < sutras.length; i += 1) {
+        if (sutras[i] && sutras[i].id === initialId) {
+          initialSutra = sutras[i];
+          break;
+        }
+      }
+    }
+
+    if (!initialSutra && sutras.length > 0) {
+      initialSutra = sutras[0];
+      initialId = initialSutra && initialSutra.id ? initialSutra.id : null;
+    }
+
+    var initialActiveIndex = 0;
+    if (
+      initialSutra &&
+      Array.isArray(initialSutra.cards) &&
+      initialSutra.cards.length > 0 &&
+      initialSelection.cardIdentifier
+    ) {
+      initialActiveIndex = findCardIndexByIdentifier(initialSutra.cards, initialSelection.cardIdentifier);
+    }
+
+    var stateSelected = useState(function () {
+      return initialId;
+    });
     var selectedId = stateSelected[0];
     var setSelectedId = stateSelected[1];
 
@@ -737,6 +933,8 @@
     var limiterRef = useRef(null);
     var segmentContextRef = useRef(null);
     var targetEndRef = useRef(null);
+    var lastSyncedSelectionRef = useRef('');
+    var prevSutraIdRef = useRef(null);
 
     var clearLimiter = useCallback(function (audio) {
       if (!audio) {
@@ -1149,32 +1347,14 @@
 
     var cards = currentSutra && Array.isArray(currentSutra.cards) ? currentSutra.cards : [];
     var hasMultipleCards = cards.length > 1;
-    var stateActiveIndex = useState(0);
+    var stateActiveIndex = useState(function () {
+      return initialActiveIndex;
+    });
     var activeIndex = stateActiveIndex[0];
     var setActiveIndex = stateActiveIndex[1];
 
     var getCardIdentifier = useCallback(function (card, index) {
-      if (!card || typeof card !== 'object') {
-        return null;
-      }
-
-      if (card.id !== undefined && card.id !== null && card.id !== '') {
-        return String(card.id);
-      }
-
-      if (card.sequence !== undefined && card.sequence !== null && card.sequence !== '') {
-        return 'sequence:' + String(card.sequence);
-      }
-
-      if (typeof index === 'number' && !Number.isNaN(index)) {
-        return 'index:' + index;
-      }
-
-      if (card.romaji) {
-        return 'romaji:' + String(card.romaji);
-      }
-
-      return null;
+      return computeCardIdentifier(card, index);
     }, []);
 
     var playSegment = useCallback(function (card, index) {
@@ -1483,11 +1663,39 @@
 
     useEffect(
       function () {
-        if (currentSutra && Array.isArray(currentSutra.cards)) {
+        var currentId = currentSutra && currentSutra.id ? currentSutra.id : null;
+        if (prevSutraIdRef.current === null) {
+          prevSutraIdRef.current = currentId;
+          return;
+        }
+
+        if (prevSutraIdRef.current !== currentId) {
+          prevSutraIdRef.current = currentId;
           setActiveIndex(0);
         }
       },
-      [currentSutra]
+      [currentSutra, setActiveIndex]
+    );
+
+    useEffect(
+      function () {
+        var cardIdentifier = null;
+        if (Array.isArray(cards) && cards.length > 0 && typeof activeIndex === 'number') {
+          var safeIndex = Math.max(0, Math.min(activeIndex, cards.length - 1));
+          var card = cards[safeIndex];
+          cardIdentifier = getCardIdentifier(card, safeIndex);
+        }
+
+        var descriptor = String(selectedId || '') + '|' + String(cardIdentifier || '');
+        if (descriptor === lastSyncedSelectionRef.current) {
+          return;
+        }
+
+        var shouldReplace = lastSyncedSelectionRef.current === '';
+        syncSelectedStateToUrl(selectedId, cardIdentifier, shouldReplace);
+        lastSyncedSelectionRef.current = descriptor;
+      },
+      [selectedId, activeIndex, cards, getCardIdentifier]
     );
 
     var audioPanel = null;
@@ -1647,6 +1855,41 @@
       }
     }
 
+    var currentSutraTitleData = normalizeSutraTitleValue(currentSutra ? currentSutra.title : null);
+    var romajiHeading = currentSutraTitleData.romaji;
+    var originalHeading = currentSutraTitleData.original;
+    var hasHeadingParts = Boolean(romajiHeading || originalHeading);
+    var fallbackHeading = '';
+    if (!hasHeadingParts) {
+      if (currentSutraTitleData.translation) {
+        fallbackHeading = currentSutraTitleData.translation;
+      } else if (currentSutra && currentSutra.id) {
+        fallbackHeading = String(currentSutra.id);
+      }
+    }
+    var sutraSubtitleText =
+      hasHeadingParts && currentSutraTitleData.translation
+        ? '(' + currentSutraTitleData.translation + ')'
+        : '';
+    var sutraHeadingNode = null;
+    if (hasHeadingParts) {
+      var headingChildren = [];
+      if (romajiHeading) {
+        headingChildren.push(romajiHeading);
+      }
+      if (romajiHeading && originalHeading) {
+        headingChildren.push(' ');
+      }
+      if (originalHeading) {
+        headingChildren.push(
+          createElement('span', { className: 'cz-sutra-title__original' }, originalHeading)
+        );
+      }
+      sutraHeadingNode = createElement('h2', { className: 'cz-sutra-title' }, headingChildren);
+    } else if (fallbackHeading) {
+      sutraHeadingNode = createElement('h2', { className: 'cz-sutra-title' }, fallbackHeading);
+    }
+
     return createElement(
       'div',
       { className: 'cz-sutra-memorizer' },
@@ -1663,8 +1906,9 @@
             createElement(
               'div',
               { className: 'cz-panel-header' },
-              currentSutra.title
-                ? createElement('h2', { className: 'cz-sutra-title' }, currentSutra.title)
+              sutraHeadingNode,
+              sutraSubtitleText
+                ? createElement('p', { className: 'cz-sutra-subtitle' }, sutraSubtitleText)
                 : null,
               currentSutra.description
                 ? createElement('p', { className: 'cz-sutra-description' }, currentSutra.description)

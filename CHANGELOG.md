@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0]
+### Added
+- Added the fueko dedication audio and text to `sutra.json`.
+- Added `taggesa-ge.m4a` and updates its timing and translation.
+- Added URL support for selected sutra and part.
+### Changed
+- Updated sutra title in `sutra.json` as an object
+- Updated `hannya-shingyo.m4a` and related timings in `sutra.json`
+
 ## [1.1.1]
 ### Fixed
 - Fix control styling and appearance.
@@ -28,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix card's audio control behaviour.
 
 [Unreleased]: https://github.com/erremauro/cz-sutra-memorizer/compare/v1.1.1...HEAD
+[1.2.0]: https://github.com/erremauro/cz-continue-reading/releases/tag/v1.2.0
 [1.1.1]: https://github.com/erremauro/cz-continue-reading/releases/tag/v1.1.1
 [1.1.0]: https://github.com/erremauro/cz-continue-reading/releases/tag/v1.1.0
 [1.0.0]: https://github.com/erremauro/cz-continue-reading/releases/tag/v1.0.0
