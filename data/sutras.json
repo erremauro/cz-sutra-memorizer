@@ -294,5 +294,26 @@
         "audioEnd": null
       }
     ]
+  },
+  {
+    "id": "ji-ho-san-shi",
+    "title": {
+      "original": "持法三師",
+      "romaji": "JI HŌ SAN SHI",
+      "translation": "I Tre Maestri Custodi del Dharma"
+    },
+    "description": "",
+    "audio": "/assets/audio/ji-ho-san-shi.m4a",
+    "cards": [
+      {
+        "id": "rs-01",
+        "sequence": 1,
+        "original": "持法三世諸尊仏\n師僧菩薩摩訶薩\n摩訶般若波羅蜜",
+        "romaji": "Ji hō san shi i shi fu\n◉ Shi son bu sa mo ko sa\n◉ Mo ko hōja ho ro mi ▲",
+        "translation": "A tutti i Buddha passati, presenti e futuri nelle dieci direzioni\nA tutti i Bodhisattva e i Patriarchi.\nIl sūtra della Grande Saggezza che permette di andare al di là.",
+        "audioStart": 0.9,
+        "audioEnd": null
+      }
+    ]
   }
 ]
