@@ -42,6 +42,8 @@
     cardIndicatorLabel: 'Vai alla scheda'
   };
 
+  var DESCRIPTION_PREVIEW_LIMIT = 150;
+
   function computeCardIdentifier(card, index) {
     if (!card || typeof card !== 'object') {
       return null;
@@ -213,6 +215,83 @@
     }
 
     return fallback;
+  }
+
+  function stripHtmlTags(input) {
+    if (input === undefined || input === null) {
+      return '';
+    }
+    return String(input).replace(/<[^>]*>/g, '');
+  }
+
+  function getHtmlContent(value) {
+    if (value === undefined || value === null) {
+      return '';
+    }
+    return String(value);
+  }
+
+  function truncateHtmlContent(html, limit) {
+    if (!html || typeof html !== 'string') {
+      return '';
+    }
+    if (!limit || limit <= 0) {
+      return '';
+    }
+
+    var plain = stripHtmlTags(html);
+    if (plain.length <= limit) {
+      return html;
+    }
+
+    if (typeof document === 'undefined' || typeof document.createElement !== 'function' || typeof NodeFilter === 'undefined') {
+      return plain.slice(0, limit).replace(/\s+$/g, '') + '…';
+    }
+
+    var container = document.createElement('div');
+    container.innerHTML = html;
+
+    var total = 0;
+    var iterator = document.createNodeIterator(container, NodeFilter.SHOW_TEXT, null);
+    var current = iterator.nextNode();
+
+    while (current) {
+      var value = current.textContent || '';
+
+      if (value) {
+        var remaining = limit - total;
+
+        if (remaining <= 0) {
+          var parent = current.parentNode;
+          if (parent) {
+            parent.removeChild(current);
+          }
+        } else if (value.length <= remaining) {
+          total += value.length;
+        } else {
+          current.textContent = value.slice(0, remaining).replace(/\s+$/g, '') + '…';
+          total = limit;
+
+          var node = current;
+          while (node.nextSibling) {
+            node.parentNode.removeChild(node.nextSibling);
+          }
+          var ancestor = node.parentNode;
+          while (ancestor && ancestor !== container) {
+            while (ancestor.nextSibling) {
+              ancestor.parentNode.removeChild(ancestor.nextSibling);
+            }
+            ancestor = ancestor.parentNode;
+          }
+
+          break;
+        }
+      }
+
+      current = iterator.nextNode();
+    }
+
+    return container.innerHTML;
   }
 
   function IconPlay() {
@@ -773,7 +852,10 @@
         { className: 'cz-collapsible cz-collapsible--primary' + (showPrimary ? ' is-open' : '') },
         primaryHeader,
         card.note
-          ? createElement('p', { className: 'cz-card__note' }, card.note)
+          ? createElement('p', {
+              className: 'cz-card__note',
+              dangerouslySetInnerHTML: { __html: getHtmlContent(card.note) }
+            })
           : null,
         showPrimary
           ? createElement(
@@ -782,7 +864,10 @@
               createElement(
                 'div',
                 { className: 'cz-card__block cz-card__block--romaji cz-card__block--primary' },
-                createElement('p', { className: 'cz-card__text' }, card.romaji || '')
+                createElement('p', {
+                  className: 'cz-card__text',
+                  dangerouslySetInnerHTML: { __html: getHtmlContent(card.romaji || '') }
+                })
               )
             )
           : null
@@ -815,14 +900,17 @@
                 })
               ),
               createElement('span', { className: 'cz-collapsible__label' }, props.strings.originalLabel)
-            ),
-            showOriginal
-              ? createElement(
-                  'div',
-                  { className: 'cz-collapsible__content' },
-                  createElement('p', { className: 'cz-card__text' }, card.original || '')
-                )
-              : null
+              ),
+              showOriginal
+                ? createElement(
+                    'div',
+                    { className: 'cz-collapsible__content' },
+                    createElement('p', {
+                      className: 'cz-card__text',
+                      dangerouslySetInnerHTML: { __html: getHtmlContent(card.original || '') }
+                    })
+                  )
+                : null
           )
         : null,
       hasTranslation
@@ -853,14 +941,17 @@
                 })
               ),
               createElement('span', { className: 'cz-collapsible__label' }, props.strings.translationLabel)
-            ),
-            showTranslation
-              ? createElement(
-                  'div',
-                  { className: 'cz-collapsible__content' },
-                  createElement('p', { className: 'cz-card__text' }, card.translation || '')
-                )
-              : null
+              ),
+              showTranslation
+                ? createElement(
+                    'div',
+                    { className: 'cz-collapsible__content' },
+                    createElement('p', {
+                      className: 'cz-card__text',
+                      dangerouslySetInnerHTML: { __html: getHtmlContent(card.translation || '') }
+                    })
+                  )
+                : null
           )
         : null
     );
@@ -928,6 +1019,16 @@
     var stateScrubbing = useState(false);
     var isScrubbing = stateScrubbing[0];
     var setIsScrubbing = stateScrubbing[1];
+
+    var stateDescriptionExpanded = useState(false);
+    var isDescriptionExpanded = stateDescriptionExpanded[0];
+    var setDescriptionExpanded = stateDescriptionExpanded[1];
+
+    var toggleDescription = useCallback(function () {
+      setDescriptionExpanded(function (prev) {
+        return !prev;
+      });
+    }, [setDescriptionExpanded]);
 
     var audioRef = useRef(null);
     var limiterRef = useRef(null);
@@ -1666,15 +1767,17 @@
         var currentId = currentSutra && currentSutra.id ? currentSutra.id : null;
         if (prevSutraIdRef.current === null) {
           prevSutraIdRef.current = currentId;
+          setDescriptionExpanded(false);
           return;
         }
 
         if (prevSutraIdRef.current !== currentId) {
           prevSutraIdRef.current = currentId;
           setActiveIndex(0);
+          setDescriptionExpanded(false);
         }
       },
-      [currentSutra, setActiveIndex]
+      [currentSutra, setActiveIndex, setDescriptionExpanded]
     );
 
     useEffect(
@@ -1855,6 +1958,14 @@
       }
     }
 
+    var rawDescription = currentSutra && currentSutra.description ? getHtmlContent(currentSutra.description) : '';
+    var plainDescription = rawDescription ? stripHtmlTags(rawDescription) : '';
+    var descriptionIsLong = plainDescription.length > DESCRIPTION_PREVIEW_LIMIT;
+    var collapsedDescriptionHtml = descriptionIsLong
+      ? truncateHtmlContent(rawDescription, DESCRIPTION_PREVIEW_LIMIT)
+      : rawDescription;
+    var descriptionContentHtml = isDescriptionExpanded ? rawDescription : collapsedDescriptionHtml;
+
     var currentSutraTitleData = normalizeSutraTitleValue(currentSutra ? currentSutra.title : null);
     var romajiHeading = currentSutraTitleData.romaji;
     var originalHeading = currentSutraTitleData.original;
@@ -1910,8 +2021,29 @@
               sutraSubtitleText
                 ? createElement('p', { className: 'cz-sutra-subtitle' }, sutraSubtitleText)
                 : null,
-              currentSutra.description
-                ? createElement('p', { className: 'cz-sutra-description' }, currentSutra.description)
+              rawDescription
+                ? createElement(
+                    'div',
+                    { className: 'cz-sutra-description-container' },
+                    createElement('p', {
+                      className:
+                        'cz-sutra-description' +
+                        (!isDescriptionExpanded && descriptionIsLong ? ' is-collapsed' : ''),
+                      dangerouslySetInnerHTML: { __html: descriptionContentHtml }
+                    }),
+                    descriptionIsLong
+                      ? createElement(
+                          'button',
+                          {
+                            type: 'button',
+                            className: 'cz-sutra-description__toggle',
+                            onClick: toggleDescription,
+                            'aria-expanded': isDescriptionExpanded
+                          },
+                          isDescriptionExpanded ? 'Mostra meno' : 'Continua'
+                        )
+                      : null
+                  )
                 : null,
               audioPanel,
               audioStatus
