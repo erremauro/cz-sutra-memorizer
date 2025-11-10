@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Added "Ji HŌ SAN SHI" audio and text to `sutra.json`
+- Add "GYŌHATSU NENJU" translation to `sutra.json`
 ### Changed
 - All sutra text nwo supports HTML tags
 - Sutra description text has been shortned by default to 150 characters with a read more button.

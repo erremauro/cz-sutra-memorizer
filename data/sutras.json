@@ -156,6 +156,7 @@
         "sequence": 1,
         "note": "Mani in gasshō",
         "romaji": "bus-shō kabira\njō dō makada\nsep-po harana\nnyū metsu kuchira",
+        "translation": "Buddha è nato a Kapila\nEgli realizzò la Via a Maghada\nEgli insegnò il Dharma ad Harana\nEgli entrò nel parinirvana a Kuchinagara.",
         "audioStart": 0,
         "audioEnd": 11.4
       },
@@ -163,6 +164,7 @@
         "id": "sdp-02",
         "sequence": 2,
         "romaji": "nyorai ō ryōki\ngakon toku futen\ngangu is-sai shu\ntō san rin kū jaku",
+        "translation": "Ora, apriamo le ciotole del Buddha,\nAffinché chi dà, chi riceve e ciò che è dato,\nPossano essere liberati da ogni attacamento\nE raggiungere la liberazione con tutti gli esseri sensibili.",
         "audioStart": 11.5,
         "audioEnd": 24
       },
@@ -171,6 +173,7 @@
         "sequence": 3,
         "note": "Aprire la ciotola",
         "romaji": "Shin jin pashin birū shā nō fū\nEn mon hō shin rushā nō fū\nSen pa i kashin Shikya muni fū\nTōrāi asān mirūson bū",
+        "translation": "Venerazione alla purezza illimitata, al Dharmakaya del Buddha Vairocana.\nAlla forma compiuta del Buddha Amitabha.\nVenerazione alla forma manifestata del Buddha Shakyamuni.\nVenerazione a Maitreya, il buddha del futuro.",
         "audioStart": 25,
         "audioEnd": 49.2
       },
@@ -178,6 +181,7 @@
         "id": "sdp-04",
         "sequence": 4,
         "romaji": "Jihō san shi ishi shi fū\nDaī jin myō harin gākin\nDaī shin bunjusuri būsā\nDaī jin fuen būsā\nDaī hi kanshi in būsā",
+        "translation": "Venerazione a tutti i Buddha del passato, del presente e del futuro nelle dieci direzioni.\nAl Sūtra del Loto della Legge del Grande Veicolo\nVenerazione a Manjusri, grande Bodhisattva della Saggezza.\nVenerazione al grande e perfetto Bodhisattva Samantabhadra.\nVenerazione al Bodhisattva della Grande compassione, Avalokiteśvara.",
         "audioStart": 49.4,
         "audioEnd": 74.5
       },
@@ -185,6 +189,7 @@
         "id": "sdp-05",
         "sequence": 5,
         "romaji": "Shi son būsā mōkōsā\nMōkō hōja hōrōmī",
+        "translation": "Agli innumerevoli bodhisattva, a tutti i patriarchi,\nAlla Grande Saggezza che permette di andare al di là.",
         "audioStart": 74.9,
         "audioEnd": 88
       },
@@ -192,7 +197,8 @@
         "id": "sdp-06",
         "sequence": 6,
         "note": "Su \"tashō o hakari\", mani in gasshō, quindi in sasshū e poi in hokkaijō-in (zazen)",
-        "romaji": "Hitotsu ni wa kō no tashō o hakari\nKano rāi sho o hakaru\nFutatsu ni wa onorega tokugyō no\nZen ket-to hakat-te kuni ōzu",
+        "romaji": "Hitotsu ni wa kō no tashō o hakari\nKano rāi sho o hakaru\nFutatsu ni wa onorega tokugyō no\nZen ket-to hakat-te ku ni ōzu",
+        "original": "In primo luogo: dobbiamo riflette sul modo in cui questo cibo è giunto a noi.\nLa nostra riconoscenza si rivolge a tutti coloro che vi hanno contribuito.\nIn secondo luogo: ricevendo questo dono,\nDobbiamo verificare se le nostre virtù e la nostra pratica lo meritano veramente.",
         "audioStart": 87.9,
         "audioEnd": 104.9
       },
@@ -200,6 +206,7 @@
         "id": "sdp-07",
         "sequence": 7,
         "romaji": "Mitsu ni wa shīn o fusegi toga o hanaruru koto wa\nTontō o shū to su.\nYotsu ni wa masani ryō yaku o koto to suru wa\ngyōko o ryōzen ga tame nari.",
+        "original": "In terzo luogo: dobbiamo tornare alla condizione normale di spirito, essere liberi da ogni bramosia e avidità.\nIn quarto luogo, dobbiamo mangiare questo cibo per la salute del nostro corpo.",
         "audioStart": 105.2,
         "audioEnd": 123.5
       },
@@ -207,6 +214,7 @@
         "id": "sdp-08",
         "sequence": 8,
         "romaji": "Itsutsu ni wa jōdō no tame no yueni\nima kono jiki o uku.",
+        "translation": "In quinto luogo: riceviamo questo\ncibo per perfezionarci sulla Via del Buddha.",
         "audioStart": 123.8,
         "audioEnd": 133.2
       },
@@ -215,6 +223,7 @@
         "sequence": 9,
         "note": "(Cantato solo dal Godō o l'Inō)",
         "romaji": "Jiten ki jin shu,\nGokin suji kyū\nSuji hen jihō\nIshi ki jin kyū",
+        "translation": "Per tutti gli spiriti affamati,\nOffro ora questo cibo\nChe penetri l'intero universo.\nSpero di condividerlo con voi.",
         "audioStart": null,
         "audioEnd": null
       },
@@ -223,6 +232,7 @@
         "sequence": 10,
         "note": "Mettere il cucchiaio nella ciotola",
         "romaji": "Jōbun sambō\nchūbun shion\nGekyū roku dō\nKai dō kuyō",
+        "translation": "Ai Tre Tesori, Buddha, Dharma e Sanga,\nA tutti coloro che ci hanno aiutato, i nostri genitori, i nostri maestri, l'umanità intera,\nA tutti gli esseri che soffrono, che sono prigionieri dei sei mondi delll'erranza e che non possono liberarsi da soli,\nChe questo cibo possa servire a tutte le esistenze dell'universo.",
         "audioStart": 133.9,
         "audioEnd": 143.4
       },
@@ -231,6 +241,7 @@
         "sequence": 11,
         "note": "Alzare la ciotola",
         "romaji": "Ik-ku idan is-sāi aku\nNiku i shu is-saī zen\nSanku ido shoshu jō\nKaīgu jō butsu dō",
+        "translation": "Primo, mangiamo per eliminare ogni male.\nSecondo, per fare il bene.\nTerzo, per salvare tutti gli esseri sensibili.\nRealizziamo insieme la Via del Buddha.",
         "audioStart": 143.6,
         "audioEnd": 158.2
       },
@@ -238,7 +249,8 @@
         "id": "sdp-12",
         "sequence": 12,
         "note": "Offrire l'acqua",
-        "romaji": "Gashi sen pas sūi\nNyo ten kan ro mi\nSeyo ki jin shū\nShiryō toku bō man\nOn makura sai sowaka",
+        "romaji": "Gashi sen pas-sūi\nNyo ten kan ro mi\nSeyo ki jin shū\nShiryō toku bō man\nOn makura sai sowaka",
+        "translation": "Con quest'acqua lavo la mia ciotola,\nEssa ha il gusto del nettare celeste.\nNe faccio offerta a tutti i morti e a tutti coloro che soffrono nei loro inferni\nChe essa li plachi com la rugiada del mattino",
         "audioStart": 158.9,
         "audioEnd": 184.3
       },
@@ -247,6 +259,7 @@
         "sequence": 13,
         "note": "(Cantanto solo dal Godō o dall'Inō)",
         "romaji": "Shi shi kī jiki kūn\njiren kufu ja shī\nShin shin jin chō i hi\nKishu rin bujō son",
+        "translation": "In questo mondo d'illusione, vuoto e impermanente,\nChe si possa esistere nell'acqua fangosa del mondo del samsara,\nCon la purezza del fiore di loto.\nNulla supera lo spirito illimitato.\nCosì, ci inchiniamo davanti al Buddha.",
         "audioStart": null,
         "audioEnd": null
       }
