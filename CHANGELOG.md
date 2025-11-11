@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - All sutra text nwo supports HTML tags
 - Sutra description text has been shortned by default to 150 characters with a read more button.
+- Updates "Hannya Shingyo" description and translation.
 
 ## [1.2.0]
 ### Added
