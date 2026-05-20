@@ -328,5 +328,94 @@
         "audioEnd": null
       }
     ]
+  },
+  {
+    "id": "daishin-darani",
+    "title": {
+      "original": "大悲心陀羅尼",
+      "romaji": "DAISHIN DARANI",
+      "translation": "Il Grande Dharani della Compassione"
+    },
+    "description": "Il Daishin Darani è il Grande Dharani della Compassione, una delle preghiere fondamentali della tradizione zen. È la trascrizione cinese di un antico testo sanscrito dedicato ad Avalokiteshvara (Kannon), il Bodhisattva della Grande Compassione. Recitarlo è un atto di apertura verso tutti gli esseri sofferenti e un'invocazione alla saggezza compassionevole che permea ogni cosa.",
+    "audio": "assets/audio/daishin-darani.m4a",
+    "cards": [
+      {
+        "id": "dd-01",
+        "sequence": 1,
+        "romaji": "Namu kara tan no\ntora ya ya\nnamu ori ya\nboryo ki chi shifu ra ya\nfuji sato bo ya\nmoko sato bo ya\nmo ko kya runi kya ya",
+        "audioStart": 20.435,
+        "audioEnd": 37.478
+      },
+      {
+        "id": "dd-02",
+        "sequence": 2,
+        "romaji": "en\nsa hara ha e shu tan no ton sha\nnamu shiki ri toi mo\nori ya\nboryo ki chi\nshifu ra\nrin to bo",
+        "audioStart": 37.213,
+        "audioEnd": 50.865
+      },
+      {
+        "id": "dd-03",
+        "sequence": 3,
+        "romaji": "na mu no ra\nkin ji ki ri\nmo ko ho do\nsha mi sa bo\no to jo shu ben\no shu in\nsa bo sa to\nno mo bo gya\nmo ha te cho",
+        "audioStart": 51.000,
+        "audioEnd": 70.148
+      },
+      {
+        "id": "dd-04",
+        "sequence": 4,
+        "romaji": "to ji to\nen\no bo ryo ki\nru gya chi\nkya ra chi\ni kiri mo ko\nfuji sa to",
+        "audioStart": 70.030,
+        "audioEnd": 81.477
+      },
+      {
+        "id": "dd-05",
+        "sequence": 5,
+        "romaji": "sa bo sa bo\nmo ra mo ra\nmo ki mo ki\nri to in ku ryo ku ryo\nke mo to ryo to ryo\nho ja ya chi\nmo ko ho ja ya chi\nto ra to ra\nchiri ni\nshifu ra ya",
+        "audioStart": 81.477,
+        "audioEnd": 105.163
+      },
+      {
+        "id": "dd-06",
+        "sequence": 6,
+        "romaji": "sha ro sha ro\nmo mo ha mo ra\nho chi ri\ni ki i ki\nshi no shi no\nora san fura sha ri\nha za ha zan\nfura sha ya",
+        "audioStart": 105.250,
+        "audioEnd": 122.523
+      },
+      {
+        "id": "dd-07",
+        "sequence": 7,
+        "romaji": "ku ryo ku ryo\nmo ra ku ryo ku ryo\nki ri sha ro sha ro\nshi ri shi ri\nsu ryo su ryo\nfuji ya\nfuji ya\nfudo ya fudo ya",
+        "audioStart": 122.680,
+        "audioEnd": 139.912
+      },
+      {
+        "id": "dd-08",
+        "sequence": 8,
+        "romaji": "mi chiri ya\nnora kin ji\nchiri shuni no\nhoya mono\nsomo ko",
+        "audioStart": 140.000,
+        "audioEnd": 147.025
+      },
+      {
+        "id": "dd-09",
+        "sequence": 9,
+        "romaji": "shido ya\nsomo ko\nmoko shido ya\nsomo ko\nshido yu ki\nshifu ra ya\nsomo ko\nnora kin ji\nsomo ko\nmo ra no ra somo ko\nshira su omo gya ya\nsomo ko",
+        "audioStart": 147.100,
+        "audioEnd": 166.295
+      },
+      {
+        "id": "dd-10",
+        "sequence": 10,
+        "romaji": "sobo moko shido ya\nsomo ko\nshaki ra oshi do ya\nsomo ko\nhodo mogya shido ya\nsomo ko\nnora kin ji ha gyara ya\nsomo ko",
+        "audioStart": 166.300,
+        "audioEnd": 180.578
+      },
+      {
+        "id": "dd-11",
+        "sequence": 11,
+        "romaji": "mo hori shin gyara ya\n somo ko\nnamu kara tan no tora ya ya\nnamu ori ya\nboryo ki chi\nshifu ra ya\nsomo ko\nshite do modora\nhodo ya\nso mo ko",
+        "audioStart": 180.600,
+        "audioEnd": 199.723
+      }
+    ]
   }
 ]
