@@ -3,7 +3,7 @@
  * Plugin Name: CZ Sutra Memorizer
  * Plugin URI: https://github.com/erremauro/cz-sutra-memorizer
  * Description: Fornisce una Single Page App in React per memorizzare i sutra attraverso schede con testo, romaji e traduzione.
- * Version: 0.1.0
+ * Version: 1.4.1
  * Author: Roberto Mauro
  * License: ISC
  * Text Domain: cz-sutra-memorizer
